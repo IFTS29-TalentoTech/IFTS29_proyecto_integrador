@@ -32,6 +32,9 @@ Cada fila indica **qué se asume mientras no haya respuesta** para que el agente
 | Q17 | ¿Existe tabla navegable de plan de estudios y correlatividades en el MVP o solo tarjetas? | Tarjetas por año con enlace al documento; tabla navegable es S | Martín Juan |
 | Q18 | El hito de la semana 13: ¿se acuerda un MVP recortado con el cliente si el PERT se confirma? | Sí; recorte de abajo hacia arriba (Could, Should) | Martín Juan |
 | Q19 | Texto completo de los subtítulos de pantalla que el Figma muestra truncados (ej. el aviso de acceso restringido del login) | Copiar del Figma con `get_design_context` | Gastón Zampar |
+| Q22 | **Roles configurables y Superadministrador (decisión del equipo, 06/11/2026).** La pantalla "Roles y permisos" no existe en el Figma. ¿Se diseña o se arma con los componentes existentes? ¿Quién es el Superadministrador de la institución? | Se reutilizan tabla, diálogo y casillas agrupadas por recurso; el Superadministrador inicial lo crea la semilla | Gastón Zampar (diseño), Martín Juan (cliente) |
+| Q23 | ¿Los permisos de los roles de sistema ADMIN, BEDELIA y EDITOR se pueden editar, o solo se crean roles nuevos? | Se pueden editar los tres; SUPERADMIN no | Equipo |
+| Q24 | ¿El ADMIN puede asignar cualquier rol salvo SUPERADMIN, o solo roles cuyos permisos ya tiene (anti-escalada estricta)? | Cualquier rol salvo SUPERADMIN | Nicolás Rolón |
 
 ## Discrepancias detectadas entre documentos
 

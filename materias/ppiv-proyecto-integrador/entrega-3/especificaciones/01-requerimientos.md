@@ -16,6 +16,7 @@ Prioridad: **M** = Debe · **S** = Debería · **C** = Podría. Origen: **Negoci
 | RF08 | Formulario de contacto a correo institucional | S | Negocio | sin diseño |
 | RF09 | Galería con descripción y categoría | C | Negocio | sin diseño |
 | RF10 | Plantel docente y materias a cargo | S | Negocio | 02 (parcial) |
+| RF11 | Rol **Superadministrador** que crea, edita y elimina roles y define qué permisos tiene cada uno; los usuarios reciben un rol | M | Negocio | 12 (requiere diseño, Q22) |
 
 ## No funcionales
 
@@ -89,6 +90,32 @@ Cuando intenta acceder a Configuración > usuarios o a Publicaciones de redes
 Entonces la API responde 403 y la interfaz no muestra esas opciones
 ```
 (Matriz completa de permisos en `04-api.md`.)
+
+**RF11 · Roles y permisos configurables (Superadministrador)**
+```
+Dado un usuario SUPERADMIN
+Cuando crea el rol "Comunicación sin archivo", tilda solo los permisos de Publicaciones y Resumen y lo guarda
+Entonces el rol queda disponible al crear o editar usuarios
+Y un usuario con ese rol ve solo Resumen y Publicaciones, y la API responde 403 en cualquier otro recurso
+Y el alta del rol queda en AuditLog con quién y cuándo
+
+Dado un usuario ADMIN
+Cuando intenta abrir "Roles y permisos" o llamar a /roles
+Entonces la interfaz no ofrece esa opción y la API responde 403
+
+Dado un rol que tiene usuarios asignados
+Cuando el Superadministrador intenta eliminarlo
+Entonces se rechaza con 409 y un mensaje claro ("Reasigná a los usuarios antes de eliminar el rol")
+
+Dado que existe un solo SUPERADMIN activo
+Cuando alguien intenta desactivarlo o cambiarle el rol
+Entonces se rechaza con 409: el sistema siempre conserva al menos un Superadministrador
+
+Dado un cambio de permisos de un rol
+Cuando un usuario de ese rol hace su siguiente pedido
+Entonces se aplican los permisos nuevos, sin que tenga que volver a iniciar sesión
+```
+Reglas: el catálogo de permisos (acciones como `notices:manage`) está fijo en el código y los **roles** son datos que se configuran; el rol SUPERADMIN es del sistema, no se edita ni se elimina y siempre tiene todos los permisos; ADMIN, BEDELIA y EDITOR vienen de la semilla como roles del sistema con los permisos de la matriz de `04-api.md` (si se pueden editar, ver Q23).
 
 **RF07 · Enlaces**
 ```

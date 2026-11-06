@@ -16,7 +16,7 @@ Las integraciones externas se prueban con **dobles**: `FakeInstagramClient`, `In
 
 ## Datos de prueba
 
-La semilla (`prisma/seed.ts`) crea: un usuario por rol, un ciclo público 2026-2.º, un ciclo anterior archivado, avisos (uno vigente, uno vencido, uno urgente), tres publicaciones sociales detectadas (una de efeméride "no prioritaria"), documentos archivados de 2024 y 2025, y los enlaces de interés reales.
+La semilla (`prisma/seed.ts`) crea: los roles del sistema (SUPERADMIN, ADMIN, BEDELIA, EDITOR) con sus permisos, un usuario por rol, un ciclo público 2026-2.º, un ciclo anterior archivado, avisos (uno vigente, uno vencido, uno urgente), tres publicaciones sociales detectadas (una de efeméride "no prioritaria"), documentos archivados de 2024 y 2025, y los enlaces de interés reales.
 
 ## Escenarios E2E
 
@@ -39,6 +39,8 @@ La semilla (`prisma/seed.ts`) crea: un usuario por rol, un ciclo público 2026-2
 | E2E-15 | Subir un archivo de tipo no permitido o excedido muestra un error claro | RNF06 |
 | E2E-16 | CRUD completo de avisos: crear, ver, editar y eliminar (con diálogo de confirmación) un aviso vencido; no se puede eliminar uno vigente | Consigna de la cátedra |
 | E2E-17 | Validaciones: campos obligatorios vacíos, correo de usuario duplicado y ciclo duplicado muestran mensajes claros | Consigna de la cátedra |
+| E2E-18 | El Superadministrador crea un rol con permisos acotados y se lo asigna a un usuario; ese usuario ve solo lo permitido y recibe 403 en el resto. Un ADMIN no ve "Roles y permisos" | RF11 |
+| E2E-19 | Roles: un rol con usuarios no se elimina (mensaje claro); el último SUPERADMIN no se puede desactivar; el cambio de permisos rige sin volver a iniciar sesión | RF11 |
 
 ## Pruebas que se documentan para la cátedra
 

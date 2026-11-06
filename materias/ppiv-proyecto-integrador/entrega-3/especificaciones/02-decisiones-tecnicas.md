@@ -21,7 +21,7 @@ Cada decisión indica **estado**: *Cerrada* (decidida por la cátedra o el clien
 | 15 | Hosting y base gratuitos | A validar (DevOps) |
 | 16 | Correo transaccional por SMTP | A validar |
 | 17 | Zona horaria y localización | Propuesta |
-| 18 | Roles y permisos | A validar con el cliente |
+| 18 | Roles y permisos (ampliada con SUPERADMIN y roles configurables) | Propuesta; a validar con el equipo y el cliente |
 | 19 | Observabilidad mínima | Propuesta |
 
 ## ADR-01 · Desarrollo a medida
@@ -108,6 +108,15 @@ Idioma único `es-AR`. Fechas almacenadas en UTC y presentadas en `America/Argen
 ## ADR-18 · Roles y permisos
 
 Tres roles (matriz en `04-api.md`). El Figma define "Rectoría / Dirección: acceso total" y "Bedelía Académica: gestión de horarios y cartelera"; el rol **Editor** (comunicación) sale de la etapa de relevamiento (Matías Peláez y María del Carmen Canobi cargan contenido). **A validar con el cliente** si Editor y Bedelía son roles separados o uno solo.
+
+**Ampliación (06/11/2026): roles configurables y Superadministrador.** Se agrega el rol **SUPERADMIN**, el único que puede crear, editar y eliminar roles y asignarles permisos. Decisiones:
+- **Catálogo fijo, roles como datos.** Los permisos (`resource:action`, por ejemplo `notices:manage`) son un catálogo definido en `packages/shared`, porque cada uno corresponde a código. Los roles y sus permisos pasan a la base: tablas `Role` y `RolePermission`; `User.roleId` reemplaza al enum `Role`.
+- **Roles del sistema** (`isSystem`): SUPERADMIN, ADMIN, BEDELIA y EDITOR se crean en la semilla. SUPERADMIN no se edita ni se elimina y siempre tiene todos los permisos (se resuelve en código, no en filas). ADMIN pierde el permiso `roles:manage`.
+- **Sin bloqueo del sistema:** siempre debe existir al menos un SUPERADMIN activo (409 al intentar desactivarlo o cambiarle el rol).
+- **Anti-escalada:** solo SUPERADMIN gestiona roles y puede asignar el rol SUPERADMIN; ADMIN asigna cualquier otro rol a los usuarios.
+- **Eliminar un rol** sigue la regla general del proyecto: manual, con confirmación, auditado y solo si no tiene usuarios asignados (409 si los tiene).
+- **Vigencia de los permisos:** se leen de la base en cada pedido (o con caché corta invalidada al guardar), de modo que un cambio rige de inmediato.
+- **Sin más complejidad:** sin permisos por registro ni jerarquías de roles. Cada rol es una lista de permisos del catálogo, lo que un instituto con pocos usuarios puede entender y administrar.
 
 ## ADR-19 · Observabilidad
 
