@@ -104,8 +104,8 @@ Hoy les mostramos cómo quedó, con la aplicación funcionando. Vamos a seguir l
 |---|---|---|
 | 1 | **Configuración → período académico** (año y cuatrimestre) | "Con un cambio, todo el sitio pasa a mostrar el cuatrimestre nuevo." |
 | 2 | **Datos institucionales y enlaces** (SIU, Aulas Virtuales, Mi Argentina, correo de contacto) | "Dirección, teléfono, correo y los accesos del sitio se editan acá." |
-| 3 | **Usuarios**: crear un usuario y asignarle un rol; mostrar el aviso si el correo ya existe | "Cada persona tiene su usuario. Si no hay que dar más acceso, no se da." |
-| 4 | **Roles y permisos** *(nuevo, solo Superadministrador)*: crear un rol, por ejemplo **Prensa**, y tildar solo lo que puede hacer (Publicaciones y Resumen) | "Hay roles ya armados, como Bedelía, Comunicación y Administración. Pero el instituto no queda atado a ellos: el **superadministrador** puede crear un rol nuevo y elegir, casilla por casilla, qué puede hacer." |
+| 3 | **Usuarios**: crear un usuario y asignarle un rol; mostrar el aviso si el correo ya existe | "Cada persona tiene su usuario. Administración puede crear usuarios, también otros administradores. Lo que no puede es crear superadministradores ni darle a alguien más permisos de los que tiene." |
+| 4 | **Roles y permisos** *(nuevo, solo Superadministrador)*: crear un rol, por ejemplo **Prensa**, y tildar solo lo que puede hacer (Publicaciones y Resumen) | "Hay roles ya armados, como Bedelía, Comunicación y Administración. Pero el instituto no queda atado a ellos: el **superadministrador** puede crear un rol nuevo, y también ajustar los que ya existen, eligiendo casilla por casilla exactamente qué puede hacer cada uno." |
 | 5 | Asignar **Prensa** a un usuario, ingresar con ese usuario y mostrar que ve solo **Publicaciones y Resumen** | "La persona con este rol no ve ni puede usar nada más." |
 | 6 | Volver al Superadministrador y mostrar el **registro de actividad** (quién creó el rol y cuándo) | "Todo queda registrado: quién hizo qué y cuándo." |
 

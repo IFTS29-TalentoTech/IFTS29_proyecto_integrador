@@ -16,7 +16,7 @@ Prioridad: **M** = Debe · **S** = Debería · **C** = Podría. Origen: **Negoci
 | RF08 | Formulario de contacto a correo institucional | S | Negocio | sin diseño |
 | RF09 | Galería con descripción y categoría | C | Negocio | sin diseño |
 | RF10 | Plantel docente y materias a cargo | S | Negocio | 02 (parcial) |
-| RF11 | Rol **Superadministrador** que crea, edita y elimina roles y define qué permisos tiene cada uno; los usuarios reciben un rol | M | Negocio | 12 (requiere diseño, Q22) |
+| RF11 | Rol **Superadministrador** que crea, edita y elimina roles y define qué permisos tiene cada uno; los usuarios reciben un rol | M | Negocio | 12 (sin Figma: se arma con componentes existentes) |
 
 ## No funcionales
 
@@ -103,6 +103,17 @@ Dado un usuario ADMIN
 Cuando intenta abrir "Roles y permisos" o llamar a /roles
 Entonces la interfaz no ofrece esa opción y la API responde 403
 
+Dado un usuario SUPERADMIN o ADMIN
+Cuando crea un usuario y elige el rol "Administración"
+Entonces el usuario queda creado con ese rol (un administrador puede crear otros administradores)
+Y el selector de roles de un ADMIN no ofrece "Superadministrador" ni roles con permisos que él no tiene
+Y si fuerza esa asignación por la API, la respuesta es 403
+
+Dado el SUPERADMIN en "Roles y permisos"
+Cuando abre un rol
+Entonces ve todos los permisos del sistema agrupados por recurso, cada uno con su casilla
+Y el rol puede hacer exactamente lo que está tildado: lo que no está tildado se rechaza (403)
+
 Dado un rol que tiene usuarios asignados
 Cuando el Superadministrador intenta eliminarlo
 Entonces se rechaza con 409 y un mensaje claro ("Reasigná a los usuarios antes de eliminar el rol")
@@ -115,7 +126,7 @@ Dado un cambio de permisos de un rol
 Cuando un usuario de ese rol hace su siguiente pedido
 Entonces se aplican los permisos nuevos, sin que tenga que volver a iniciar sesión
 ```
-Reglas: el catálogo de permisos (acciones como `notices:manage`) está fijo en el código y los **roles** son datos que se configuran; el rol SUPERADMIN es del sistema, no se edita ni se elimina y siempre tiene todos los permisos; ADMIN, BEDELIA y EDITOR vienen de la semilla como roles del sistema con los permisos de la matriz de `04-api.md` (si se pueden editar, ver Q23).
+Reglas (**confirmadas con el cliente el 06/11/2026**): el catálogo de permisos (acciones como `notices:manage`) está fijo en el código y los **roles** son datos que se configuran. **Todos los roles, incluidos ADMIN, BEDELIA y EDITOR, tienen exactamente los permisos que el Superadministrador tilda en la pantalla de roles**; la matriz de `04-api.md` es solo el punto de partida de la semilla. SUPERADMIN es del sistema, no se edita ni se elimina y siempre tiene todos los permisos. El permiso `roles:manage` está reservado a SUPERADMIN: no aparece entre las casillas ni se puede guardar en otro rol. Crean usuarios SUPERADMIN y ADMIN; un ADMIN asigna solo roles cuyos permisos incluye (los de otros ADMIN entre ellos) y nunca SUPERADMIN.
 
 **RF07 · Enlaces**
 ```

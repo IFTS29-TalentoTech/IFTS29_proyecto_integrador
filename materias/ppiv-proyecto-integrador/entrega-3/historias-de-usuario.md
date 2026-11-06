@@ -60,7 +60,7 @@ Como **aspirante**, quiero **conocer la carrera, el plan de estudios y los pasos
 **H9 · Gestionar usuarios, roles y permisos**
 Como **administrador**, quiero **crear usuarios con un rol y desactivarlos** para **que cada persona acceda solo a lo que le corresponde**. Como **superadministrador**, quiero **crear roles y elegir qué puede hacer cada uno** para **adaptar los accesos a cómo se organiza el instituto**.
 - RF05, RF11, RNF06 · US-04, US-05, US-26, US-36 · Pantalla 12 (modal de usuarios y nueva sección Roles y permisos, Q22) y 13.
-- *Criterio:* un usuario de bedelía no ve ni puede usar las opciones de redes ni de usuarios; un usuario desactivado no puede ingresar; el correo no se puede duplicar; un rol creado por el superadministrador limita lo que ve y puede hacer quien lo recibe; un rol con usuarios no se elimina; siempre queda un superadministrador activo.
+- *Criterio:* un usuario de bedelía no ve ni puede usar las opciones de redes ni de usuarios; un usuario desactivado no puede ingresar; el correo no se puede duplicar; un rol creado por el superadministrador limita lo que ve y puede hacer quien lo recibe; un rol con usuarios no se elimina; siempre queda un superadministrador activo; el superadministrador tilda exactamente los permisos de cada rol y el administrador puede crear otros administradores, pero no superadministradores.
 
 **H10 · Ordenar el archivo documental**
 Como **personal autorizado**, quiero **archivar, buscar, restaurar y eliminar documentos antiguos con confirmación** para **mantener ordenado el repositorio sin perder información por error**.

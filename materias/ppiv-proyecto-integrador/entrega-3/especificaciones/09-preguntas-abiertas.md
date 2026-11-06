@@ -32,9 +32,9 @@ Cada fila indica **qué se asume mientras no haya respuesta** para que el agente
 | Q17 | ¿Existe tabla navegable de plan de estudios y correlatividades en el MVP o solo tarjetas? | Tarjetas por año con enlace al documento; tabla navegable es S | Martín Juan |
 | Q18 | El hito de la semana 13: ¿se acuerda un MVP recortado con el cliente si el PERT se confirma? | Sí; recorte de abajo hacia arriba (Could, Should) | Martín Juan |
 | Q19 | Texto completo de los subtítulos de pantalla que el Figma muestra truncados (ej. el aviso de acceso restringido del login) | Copiar del Figma con `get_design_context` | Gastón Zampar |
-| Q22 | **Roles configurables y Superadministrador (decisión del equipo, 06/11/2026).** La pantalla "Roles y permisos" no existe en el Figma. ¿Se diseña o se arma con los componentes existentes? ¿Quién es el Superadministrador de la institución? | Se reutilizan tabla, diálogo y casillas agrupadas por recurso; el Superadministrador inicial lo crea la semilla | Gastón Zampar (diseño), Martín Juan (cliente) |
-| Q23 | ¿Los permisos de los roles de sistema ADMIN, BEDELIA y EDITOR se pueden editar, o solo se crean roles nuevos? | Se pueden editar los tres; SUPERADMIN no | Equipo |
-| Q24 | ¿El ADMIN puede asignar cualquier rol salvo SUPERADMIN, o solo roles cuyos permisos ya tiene (anti-escalada estricta)? | Cualquier rol salvo SUPERADMIN | Nicolás Rolón |
+| Q22 | **Resuelta (06/11/2026):** roles configurables y Superadministrador confirmados con el cliente. La pantalla "Roles y permisos" **no va a estar en el Figma**: se arma con los componentes existentes (tabla, diálogo y casillas agrupadas por recurso). El Superadministrador local lo crea la semilla; **a quién se le entregan las credenciales en producción se decide al pasar a producción**. | Ver ADR-18 | Gastón Zampar, Martín Juan |
+| Q23 | **Resuelta (06/11/2026):** los permisos de ADMIN, BEDELIA y EDITOR **se editan** en la pantalla de roles, casilla por casilla; SUPERADMIN no se edita. | Ver ADR-18 | Equipo |
+| Q24 | **Resuelta (06/11/2026):** SUPERADMIN y ADMIN crean usuarios, también otros administradores. Un ADMIN asigna solo roles cuyos permisos incluye y nunca SUPERADMIN (regla de seguridad que agrega el equipo; se puede relajar si el cliente lo pide). | Ver ADR-18 | Equipo |
 
 ## Discrepancias detectadas entre documentos
 

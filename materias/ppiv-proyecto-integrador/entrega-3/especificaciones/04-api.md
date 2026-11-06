@@ -15,7 +15,7 @@ Base: `/api/v1`. JSON UTF-8. Fechas ISO 8601 en UTC. Autenticación por cookie d
 | Horarios y llamados a examen | ✔ | ✔ | ✔ | | |
 | Archivo documental (ver, archivar, restaurar) | ✔ | ✔ | ✔ | | |
 | Configuración del sitio y ciclo público | ✔ | ✔ | | | |
-| Usuarios (crear, desactivar, asignar rol) | ✔ | ✔ | | | |
+| Usuarios (crear, desactivar, asignar rol; un ADMIN no asigna SUPERADMIN ni roles con permisos que no tiene) | ✔ | ✔ | | | |
 | Mensajes de contacto | ✔ | ✔ | ✔ | | |
 | Auditoría | ✔ | ✔ | | | |
 | Eliminar (DELETE) contenido no vigente | ✔ | ✔ | Avisos, horarios, llamados y documentos propios de su área | Publicaciones propias y publicaciones sociales descartadas | |
@@ -76,7 +76,7 @@ Base: `/api/v1`. JSON UTF-8. Fechas ISO 8601 en UTC. Autenticación por cookie d
 - `GET/PUT /content/:page/:slug`
 - `GET/POST/PATCH /links`
 - `GET/POST/PATCH /users` (con `roleId`), `POST /users/:id/deactivate`, `POST /users/:id/reset-password`
-- **Roles y permisos (solo SUPERADMIN, permiso `roles:manage`):** `GET /permissions` (catálogo agrupado por recurso), `GET/POST /roles`, `GET/PATCH/DELETE /roles/:id`, `PUT /roles/:id/permissions` (`{ permissions: string[] }`). `GET /roles` también lo usa ADMIN para elegir el rol de un usuario (solo lectura). Reglas: el rol de sistema SUPERADMIN no se edita ni se elimina (409); un rol con usuarios no se elimina (409); no se desactiva ni se cambia el rol del último SUPERADMIN activo (409); nombre de rol único (409); permisos que no existen en el catálogo (400). Todo queda en `AuditLog` (`role.create`, `role.update`, `role.delete`, `role.permissions`).
+- **Roles y permisos (solo SUPERADMIN, permiso `roles:manage`):** `GET /permissions` (catálogo agrupado por recurso), `GET/POST /roles`, `GET/PATCH/DELETE /roles/:id`, `PUT /roles/:id/permissions` (`{ permissions: string[] }`). `GET /roles` también lo usa ADMIN para elegir el rol de un usuario (solo lectura). Reglas: el rol de sistema SUPERADMIN no se edita ni se elimina (409); un rol con usuarios no se elimina (409); no se desactiva ni se cambia el rol del último SUPERADMIN activo (409); nombre de rol único (409); permisos que no existen en el catálogo o `roles:manage` (400). `POST/PATCH /users` devuelve 403 si un ADMIN asigna SUPERADMIN o un rol con permisos que él no tiene. `GET /permissions` devuelve cada permiso con su recurso y una etiqueta en español para la pantalla de roles. Todo queda en `AuditLog` (`role.create`, `role.update`, `role.delete`, `role.permissions`).
 - `GET /audit?entity=&page=`
 
 **Eliminación (CRUD completo):** `DELETE /publications/:id`, `/social/posts/:id` (solo descartadas), `/notices/:id`, `/schedules/:id`, `/exam-calls/:id`, `/documents/:id` (solo archivados), `/links/:id`, `/content/:page/:slug` (solo secciones no estáticas), `/contact-messages/:id`. Los usuarios no se eliminan: se desactivan (`POST /users/:id/deactivate`), para conservar la auditoría. Respuesta 204; 409 si está vigente o referenciado.
