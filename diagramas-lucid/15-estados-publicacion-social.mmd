@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> DETECTED : importada de Instagram con el hashtag
+    DETECTED --> LINKED : el editor la aprueba y se crea la Publication
+    DETECTED --> DISCARDED : el editor la descarta
+    DISCARDED --> DETECTED : el editor la restaura
+    LINKED --> DETECTED : se elimina la Publication creada

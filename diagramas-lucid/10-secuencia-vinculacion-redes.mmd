@@ -1,0 +1,37 @@
+sequenceDiagram
+    autonumber
+    actor Ed as Editor
+    participant P as Panel
+    participant A as API
+    participant IG as Instagram (Graph API)
+    participant DB as Base de datos
+    participant ST as Almacenamiento
+    actor V as Visitante
+    participant S as Sitio público
+
+    Ed->>P: Pulsa Sincronizar en el Resumen
+    P->>A: POST /social/sync
+    A->>IG: Pide las publicaciones recientes
+    IG-->>A: Lista de publicaciones
+    A->>A: Se queda con las que llevan el hashtag configurado
+    A->>DB: Guarda las nuevas como DETECTED (sin duplicar externalId)
+    A-->>P: Cantidad de publicaciones nuevas pendientes
+    Ed->>P: Abre Publicaciones y elige una
+    P->>A: GET /social/posts
+    Ed->>P: Aprueba y define sección y vigencia
+    P->>A: POST /social/posts/:id/approve
+    A->>ST: Copia la imagen a nuestro almacenamiento
+    A->>DB: Crea la Publication (origin INSTAGRAM) y marca el SocialPost como LINKED
+    A->>DB: Registra el cambio en AuditLog
+    A-->>P: Confirmación
+    V->>S: Entra a Novedades
+    S->>A: Consulta las publicaciones vigentes (caché de 60 s)
+    A-->>S: Solo las que están dentro de su vigencia
+    S-->>V: Muestra la novedad que viene de Instagram
+
+    alt Instagram falla o el token venció
+        IG-->>A: Error
+        A-->>P: 502 con mensaje claro, el resto del sitio sigue funcionando
+        Ed->>P: Carga la publicación a mano
+        P->>A: POST /social/manual
+    end

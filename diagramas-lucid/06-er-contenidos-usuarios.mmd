@@ -1,0 +1,87 @@
+erDiagram
+    User ||--o{ Session : tiene
+    User |o--o{ AuditLog : genera
+    Category |o--o{ Publication : clasifica
+    Category |o--o{ Notice : clasifica
+    SocialPost |o--o| Publication : origina
+    Document |o--o{ Notice : adjunta
+
+    User {
+        string id PK
+        string email UK
+        string name
+        string passwordHash
+        string role "ADMIN | BEDELIA | EDITOR"
+        boolean active
+        boolean mustChangePassword
+        datetime createdAt
+        datetime lastLoginAt
+    }
+    Session {
+        string id PK
+        string userId FK
+        string tokenHash UK
+        datetime expiresAt
+        datetime createdAt
+        string userAgent
+    }
+    AuditLog {
+        string id PK
+        string userId FK
+        string action
+        string entity
+        string entityId
+        json detail
+        datetime at
+    }
+    Category {
+        string id PK
+        string name
+        string kind "PUBLICATION | NOTICE | GALLERY"
+    }
+    SocialPost {
+        string id PK
+        string platform
+        string externalId UK
+        string permalink
+        string caption
+        string mediaUrl
+        datetime postedAt
+        string status "DETECTED | LINKED | DISCARDED"
+        datetime detectedAt
+        string moderatedBy
+        datetime moderatedAt
+    }
+    Publication {
+        string id PK
+        string kind "NEWS | EVENT"
+        string title
+        string summary
+        string body
+        string coverUrl
+        string categoryId FK
+        string section "HOME | NEWS | BOTH"
+        string status "DRAFT | SCHEDULED | PUBLISHED | PAUSED"
+        string origin "MANUAL | INSTAGRAM"
+        string socialPostId FK
+        datetime visibleFrom
+        datetime visibleUntil
+        datetime eventStart
+        datetime eventEnd
+        string location
+        string authorId
+    }
+    Notice {
+        string id PK
+        string title
+        string body
+        string categoryId FK
+        string audience "ALL | STUDENTS | ASPIRANTS | GRADUATES"
+        boolean urgent
+        boolean highlighted
+        string status "ACTIVE | PAUSED"
+        datetime visibleFrom
+        datetime visibleUntil
+        string attachmentId FK
+        string authorId
+    }

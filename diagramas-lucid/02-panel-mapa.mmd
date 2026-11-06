@@ -1,0 +1,26 @@
+flowchart LR
+    L["Acceso del personal<br/>correo institucional y contraseña"] --> P["Panel de Gestión Académica"]
+    P --> P0["Resumen<br/>estado de Instagram · pendientes · avisos por vencer"]
+    P --> P1["Publicaciones<br/>moderación de Instagram · publicar · pausar"]
+    P --> P2["Avisos académicos<br/>cartelera con vigencia y adjuntos"]
+    P --> P3["Horarios y llamados<br/>grillas por comisión · mesas de examen"]
+    P --> P4["Archivo<br/>documentos por ciclo · restaurar"]
+    P --> P5["Mensajes<br/>consultas del formulario de contacto"]
+    P --> P6["Configuración<br/>período · datos institucionales · usuarios · contenido · enlaces · integraciones"]
+
+    R1["Rectoría / Dirección (ADMIN)<br/>acceso total"]
+    R2["Bedelía Académica (BEDELIA)<br/>horarios, mesas, avisos y cartelera"]
+    R3["Comunicación (EDITOR)<br/>publicaciones, redes y novedades"]
+    R1 -.-> P
+    R2 -.-> P2
+    R2 -.-> P3
+    R3 -.-> P1
+
+    classDef raiz fill:#291711,stroke:#291711,color:#F6F6F3
+    classDef area fill:#E0DFD5,stroke:#8D775F,color:#291711
+    classDef acceso fill:#F6F6F3,stroke:#6F5142,color:#291711
+    classDef rol fill:#F7E9D6,stroke:#B77A3A,color:#291711,stroke-dasharray:6 4
+    class P raiz
+    class P0,P1,P2,P3,P4,P5,P6 area
+    class L acceso
+    class R1,R2,R3 rol

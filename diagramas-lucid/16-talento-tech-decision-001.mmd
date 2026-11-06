@@ -1,0 +1,17 @@
+flowchart TD
+    N["Necesidad: renovar el sitio del IFTS N°2<br/>con panel simple, vigencia de contenidos y redes"]
+    N --> A["Opción A<br/>Desarrollo a medida<br/>(sitio + panel + API propios)"]
+    N --> B["Opción B<br/>WordPress + plugins"]
+    A --> C{"Criterio: ¿cumple el alcance de la materia?<br/>Ingeniería de software completa:<br/>diseño, backend, BD, testing, despliegue"}
+    B --> C
+    C -- "Opción A: sí" --> Q["Consulta a la cátedra"]
+    C -- "Opción B: cubre poco el alcance" --> Q
+    Q --> R["Respuesta de la cátedra:<br/>NO a WordPress"]
+    R --> D["DECISIÓN: Opción A<br/>desarrollo a medida"]
+
+    classDef elegida fill:#E2EBF5,stroke:#24507F,stroke-width:3px,color:#1A1F2B
+    classDef descartada fill:#EEEEEE,stroke:#999999,color:#777777,stroke-dasharray:6 4
+    classDef decision fill:#24507F,stroke:#24507F,color:#FFFFFF
+    class A elegida
+    class B descartada
+    class D decision

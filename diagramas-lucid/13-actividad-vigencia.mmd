@@ -1,0 +1,17 @@
+flowchart TD
+    I((Inicio)) --> A[El visitante entra a<br/>Novedades o Estudiantes]
+    A --> B[La API consulta el contenido]
+    B --> C{¿Está PUBLISHED dentro de su vigencia,<br/>o SCHEDULED con visibleFrom ya cumplida?}
+    C -- Sí --> D[Se muestra en el sitio]
+    C -- No --> E[No se muestra:<br/>se conserva, nunca se borra solo]
+    E --> F{¿El editor lo reactiva?}
+    F -- Sí --> G[Pasa a PUBLISHED<br/>con nueva fecha de fin si ya venció]
+    G --> D
+    F -- No --> H[Queda guardado en el panel]
+    D --> Z((Fin))
+    H --> Z
+
+    classDef ok fill:#E8EDE4,stroke:#556B3F,color:#291711
+    classDef oculto fill:#F7E9D6,stroke:#B77A3A,color:#291711
+    class D,G ok
+    class E,H oculto

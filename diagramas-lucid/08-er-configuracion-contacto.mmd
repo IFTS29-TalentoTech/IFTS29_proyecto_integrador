@@ -1,0 +1,49 @@
+erDiagram
+    SiteSetting {
+        string key PK "sede, contactos, hashtag de Instagram, etc."
+        string value
+        datetime updatedAt
+    }
+    ContentSection {
+        string id PK
+        string page "institucional | carrera | ingreso"
+        string slug
+        string title
+        string body
+        int order
+        boolean visible
+    }
+    ExternalLink {
+        string id PK
+        string title
+        string url
+        string description
+        string group
+        int order
+        boolean visible
+    }
+    ContactMessage {
+        string id PK
+        string name
+        string email
+        string subject
+        string message
+        string status "NEW | READ | ANSWERED"
+        boolean consent
+        datetime receivedAt
+        boolean mailSent
+    }
+    InstagramToken {
+        int id PK "una sola fila (id = 1)"
+        string tokenEnc "AES-256-GCM"
+        datetime expiresAt
+        datetime refreshedAt
+        datetime lastSyncAt
+        boolean lastSyncOk
+    }
+    IntegrationConfig {
+        string key PK "instagram | mail"
+        string valueEnc "JSON cifrado"
+        string updatedBy
+        datetime updatedAt
+    }

@@ -1,0 +1,19 @@
+flowchart LR
+    DEM["Demanda: el instituto necesita<br/>información vigente y fácil de mantener"] --> PL[Planear]
+    PL --> DT[Diseñar y transicionar]
+    DT --> OC[Obtener / construir]
+    OC --> ES[Entregar y soportar]
+    ES --> VAL["Valor: sitio actualizado,<br/>editores autónomos"]
+    VI[Vincular<br/>cliente y usuarios] --- PL
+    VI --- DT
+    VI --- ES
+    ME[Mejorar] --- PL
+    ME --- OC
+    ME --- ES
+
+    classDef actividad fill:#E2EBF5,stroke:#24507F,color:#1A1F2B
+    classDef extremo fill:#24507F,stroke:#24507F,color:#FFFFFF
+    classDef transversal fill:#FFFFFF,stroke:#24507F,color:#1A1F2B,stroke-dasharray:6 4
+    class PL,DT,OC,ES actividad
+    class DEM,VAL extremo
+    class VI,ME transversal

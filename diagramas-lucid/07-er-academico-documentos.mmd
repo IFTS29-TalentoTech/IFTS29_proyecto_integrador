@@ -1,0 +1,57 @@
+erDiagram
+    AcademicTerm ||--o{ Schedule : tiene
+    AcademicTerm ||--o{ ExamCall : tiene
+    Document |o--o{ Schedule : grilla
+    Document |o--o{ ExamCall : adjunto
+    Document |o--o{ Notice : adjunto
+
+    AcademicTerm {
+        string id PK
+        int year
+        string kind "FIRST | SECOND | EXTRAORDINARY"
+        datetime startsOn
+        datetime endsOn
+        boolean publicCurrent "solo uno es el ciclo público"
+    }
+    Schedule {
+        string id PK
+        string termId FK
+        string commissionName
+        string documentId FK
+        string notes
+        boolean published
+        string updatedBy
+        datetime updatedAt
+    }
+    ExamCall {
+        string id PK
+        string termId FK
+        string name
+        datetime startsOn
+        datetime endsOn
+        boolean enrollmentOpen
+        boolean highlighted
+        string documentId FK
+        string notes
+        boolean published
+        string updatedBy
+        datetime updatedAt
+    }
+    Document {
+        string id PK
+        string title
+        string filename
+        string kind "SCHEDULE | EXAM_CALENDAR | RESOLUTION | PLAN | NOTICE_ATTACHMENT | OTHER"
+        string category
+        int cycleYear
+        string termLabel
+        string resolutionCode
+        string storageKey UK
+        string mimeType
+        int sizeBytes
+        string status "ACTIVE | ARCHIVED"
+        datetime archivedAt
+        datetime restoredAt
+        string uploadedBy
+        datetime createdAt
+    }

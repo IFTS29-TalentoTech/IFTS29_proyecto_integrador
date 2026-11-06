@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> DRAFT : crear
+    DRAFT --> DRAFT : editar
+    DRAFT --> SCHEDULED : programar con fecha de inicio futura
+    DRAFT --> PUBLISHED : publicar ahora
+    SCHEDULED --> PUBLISHED : publicar ahora
+    SCHEDULED --> PAUSED : pausar
+    PUBLISHED --> PAUSED : pausar
+    PAUSED --> PUBLISHED : reactivar
+    DRAFT --> [*] : eliminar a mano con confirmación
+    PAUSED --> [*] : eliminar a mano con confirmación

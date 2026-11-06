@@ -1,0 +1,26 @@
+flowchart TD
+    I((Inicio)) --> C{¿Origen del contenido?}
+    C -- Instagram --> E[Elegir una publicación detectada<br/>y aprobarla]
+    C -- Carga manual --> F[Completar título, resumen,<br/>cuerpo, portada y categoría]
+    E --> G[Definir sección y vigencia<br/>desde / hasta]
+    F --> G
+    G --> H{¿Datos válidos?}
+    H -- No --> G2[Marcar los campos con error]
+    G2 --> G
+    H -- Sí --> J{¿Cuándo se publica?}
+    J -- Más tarde --> B[Estado: DRAFT]
+    J -- Fecha de inicio futura --> L[Estado: SCHEDULED]
+    J -- Ahora --> K{¿La fecha de fin ya pasó?}
+    K -- Sí --> G
+    K -- No --> M[Estado: PUBLISHED]
+    B --> R[Registrar en AuditLog]
+    L --> R
+    M --> R
+    R --> Z((Fin))
+
+    classDef estado fill:#E0DFD5,stroke:#8D775F,color:#291711
+    classDef error fill:#F3DCDC,stroke:#7A3A32,color:#291711
+    classDef ok fill:#E8EDE4,stroke:#556B3F,color:#291711
+    class B,L estado
+    class G2 error
+    class M ok

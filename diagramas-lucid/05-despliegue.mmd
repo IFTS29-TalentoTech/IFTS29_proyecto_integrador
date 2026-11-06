@@ -1,0 +1,44 @@
+flowchart LR
+    subgraph USR["Dispositivo del usuario"]
+        BR["Navegador<br/>(PC / celular)"]
+    end
+
+    subgraph REP["GitHub (repositorio remoto: pendiente)"]
+        GH["Repositorio + GitHub Actions<br/>CI: lint · tipos · pruebas"]
+    end
+
+    subgraph HOST["Hosting gratuito: A DEFINIR y validar para 300-400 concurrentes"]
+        WEB["apps/web<br/>Next.js: sitio público + panel"]
+        API["apps/api<br/>Express: API REST"]
+    end
+
+    subgraph DAT["Servicios de datos"]
+        PG[("PostgreSQL 17")]
+        S3[("Almacenamiento S3 compatible<br/>archivos e imágenes")]
+    end
+
+    subgraph TER["Servicios de terceros"]
+        META["Instagram Graph API"]
+        SMTP["Servidor SMTP"]
+    end
+
+    DNS["Dominio / DNS<br/>subdominio provisorio · .edu.ar a evaluar"]
+
+    BR -->|HTTPS| DNS
+    DNS --> WEB
+    WEB -->|"/api/v1/*"| API
+    API -->|TLS| PG
+    API -->|HTTPS| S3
+    API -->|HTTPS| META
+    API -->|SMTP| SMTP
+    GH -.->|"despliegue: a definir"| WEB
+    GH -.->|"despliegue: a definir"| API
+
+    classDef app fill:#E0DFD5,stroke:#8D775F,color:#291711
+    classDef dato fill:#F7E9D6,stroke:#B77A3A,color:#291711
+    classDef externo fill:#F6F6F3,stroke:#6E7271,color:#6E7271,stroke-dasharray:6 4
+    classDef pendiente fill:#F3DCDC,stroke:#7A3A32,color:#291711,stroke-dasharray:6 4
+    class WEB,API app
+    class PG,S3 dato
+    class META,SMTP,BR externo
+    class DNS,GH pendiente

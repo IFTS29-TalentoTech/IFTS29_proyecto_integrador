@@ -1,0 +1,27 @@
+flowchart LR
+    H["Inicio<br/>hero · accesos rápidos · actualidad institucional"]
+    INS["Institucional<br/>sede · formación integral · instalaciones · cuerpo docente y bedelía · contacto"]
+    CAR["La carrera<br/>plan de estudios por año"]
+    ING["Ingreso<br/>aspirantes: convocatoria y pasos"]
+    INSC["Inscripciones<br/>alumnos: carreras y exámenes"]
+    EST["Estudiantes<br/>horarios y mesas del ciclo vigente · avisos · Tutoría"]
+    NOV["Novedades<br/>filtros por año y categoría"]
+    EXT["Enlaces externos<br/>SIU Guaraní · Aulas Virtuales · Mi Argentina"]
+
+    H --> INS
+    H --> CAR
+    H --> ING
+    H --> INSC
+    H --> EST
+    H --> NOV
+    INSC -.-> EXT
+    EST -.-> EXT
+
+    classDef raiz fill:#291711,stroke:#291711,color:#F6F6F3
+    classDef estanco fill:#E0DFD5,stroke:#8D775F,color:#291711
+    classDef dinamico fill:#F7E9D6,stroke:#B77A3A,color:#291711
+    classDef externo fill:#F6F6F3,stroke:#6E7271,color:#6E7271,stroke-dasharray:6 4
+    class H raiz
+    class INS,CAR,ING estanco
+    class INSC,EST,NOV dinamico
+    class EXT externo

@@ -1,0 +1,28 @@
+flowchart LR
+    G["<b>G</b> · Backend<br/>viene de la parte 1<br/>EF 11"]
+    H["<b>H</b> · Frontend del sitio público<br/>viene de la parte 1<br/>EF 11"]
+    I["<b>I</b> · Panel de administración<br/>viene de la parte 1<br/>EF 12"]
+    J["<b>J</b> · Integración con Instagram<br/>2 sem · ES 11 / EF 13<br/>holgura 0"]
+    K["<b>K</b> · QA<br/>2 sem · ES 11 / EF 13<br/>holgura 0"]
+    M["<b>M</b> · HITO<br/>0 sem · ES 13 / EF 13<br/>holgura 0"]
+    L["<b>L</b> · Capacitación a los editores<br/>2 sem · ES 13 / EF 15<br/>holgura 0"]
+    N["<b>N</b> · Manual de usuario y documentación técnica<br/>3 sem · ES 13 / EF 16<br/>holgura 0"]
+    O["<b>O</b> · Correcciones posteriores a la reunión 3<br/>1 sem · ES 13 / EF 14<br/>holgura 1"]
+    P["<b>P</b> · Cierre, traspaso y mantenimiento inicial<br/>1 sem · ES 15 / EF 16<br/>holgura 0"]
+    G --> J
+    G --> K
+    H --> M
+    I --> M
+    J --> M
+    K --> M
+    M --> L
+    M --> N
+    M --> O
+    L --> P
+    O --> P
+    classDef crit fill:#F3DCDC,stroke:#7A3A32,stroke-width:2px,color:#1A1F2B
+    classDef norm fill:#E2EBF5,stroke:#24507F,color:#1A1F2B
+    classDef previo fill:#FFFFFF,stroke:#24507F,color:#1A1F2B,stroke-dasharray:6 4
+    class J,K,M,L,N,P crit
+    class O norm
+    class G,H,I previo

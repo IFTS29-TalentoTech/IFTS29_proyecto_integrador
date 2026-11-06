@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    actor V as Visitante
+    participant S as Sitio público
+    participant A as API
+    participant DB as Base de datos
+    participant M as Servicio de correo
+    actor B as Bedelía
+
+    V->>S: Completa el formulario y acepta el aviso de uso de datos
+    S->>A: POST /public/contact
+    A->>A: Descarta el pedido si el campo señuelo viene completo (bots)
+    A->>A: Limita la frecuencia y valida los campos
+    A->>DB: Guarda el ContactMessage (status NEW, consent, mailSent false)
+    A->>M: Intenta enviar el aviso al correo institucional
+    M-->>B: Correo con la consulta
+    A->>DB: Marca mailSent en true
+    A-->>S: 201 recibido
+    S-->>V: Recibimos tu consulta
+
+    alt Falla el envío o no hay correo configurado
+        M-->>A: Error
+        A->>DB: El mensaje se conserva y queda visible en el panel (Mensajes)
+        A-->>S: 201 recibido
+    end

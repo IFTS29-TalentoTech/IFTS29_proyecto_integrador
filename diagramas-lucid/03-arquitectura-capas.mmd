@@ -1,0 +1,35 @@
+flowchart TB
+    B["Visitante / personal del instituto<br/>(navegador)"]
+
+    subgraph WEB["apps/web · Next.js 15"]
+        PUB["Sitio público<br/>SSR + caché de 60 s"]
+        PAN["Panel /panel/*<br/>middleware + sesión"]
+        UI["Kit de componentes<br/>tokens de paleta y tipografía"]
+    end
+
+    subgraph API["apps/api · Express 5"]
+        MW["Middleware: helmet · CORS · verificación de Origin ·<br/>sesión por cookie · límite de pedidos · validación zod · errores RFC 7807"]
+        MOD["Módulos de la API<br/>auth · users · publications · social · notices · terms ·<br/>schedules · exam-calls · documents · settings · contact · audit"]
+        INFRA["Servicios: almacenamiento · correo · Instagram · cifrado · logs"]
+        MW --> MOD --> INFRA
+    end
+
+    SH["packages/shared<br/>esquemas zod · enums · permisos · reglas de vigencia"]
+    DB[("PostgreSQL 17<br/>Prisma")]
+    EXT["Servicios externos<br/>Instagram Graph API · SMTP · S3"]
+
+    B -->|HTTPS| WEB
+    WEB -->|"/api/v1/* con cookie de sesión"| API
+    WEB -.-> SH
+    API -.-> SH
+    MOD --> DB
+    INFRA --> EXT
+
+    classDef web fill:#E0DFD5,stroke:#8D775F,color:#291711
+    classDef api fill:#F6F6F3,stroke:#6F5142,color:#291711
+    classDef dato fill:#F7E9D6,stroke:#B77A3A,color:#291711
+    classDef externo fill:#F6F6F3,stroke:#6E7271,color:#6E7271,stroke-dasharray:6 4
+    class PUB,PAN,UI web
+    class MW,MOD,INFRA,SH api
+    class DB dato
+    class EXT,B externo

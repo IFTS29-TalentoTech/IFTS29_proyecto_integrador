@@ -1,0 +1,94 @@
+classDiagram
+    direction TB
+    class User {
+        +String id
+        +String email
+        +String name
+        +Role role
+        +boolean active
+    }
+    class Role {
+        <<enumeration>>
+        ADMIN
+        BEDELIA
+        EDITOR
+    }
+    class Publication {
+        +String id
+        +PublicationKind kind
+        +String title
+        +String summary
+        +PublicationSection section
+        +PublicationStatus status
+        +PublicationOrigin origin
+        +DateTime visibleFrom
+        +DateTime visibleUntil
+        +publish()
+        +schedule()
+        +pause()
+        +reactivate()
+        +isVisible(now) boolean
+    }
+    class SocialPost {
+        +String externalId
+        +String permalink
+        +String caption
+        +SocialStatus status
+        +approve()
+        +discard()
+        +restore()
+    }
+    class Notice {
+        +String title
+        +NoticeAudience audience
+        +boolean urgent
+        +boolean highlighted
+        +NoticeStatus status
+        +DateTime visibleFrom
+        +DateTime visibleUntil
+        +isVisible(now) boolean
+    }
+    class Document {
+        +String title
+        +DocumentKind kind
+        +int cycleYear
+        +DocumentStatus status
+        +archive()
+        +restore()
+    }
+    class AcademicTerm {
+        +int year
+        +TermKind kind
+        +boolean publicCurrent
+    }
+    class Schedule {
+        +String commissionName
+        +boolean published
+    }
+    class ExamCall {
+        +String name
+        +DateTime startsOn
+        +DateTime endsOn
+        +boolean enrollmentOpen
+        +boolean highlighted
+        +boolean published
+    }
+    class Category {
+        +String name
+        +String kind
+    }
+    class AuditLog {
+        +String action
+        +String entity
+        +DateTime at
+    }
+    User --> Role
+    User "1" --> "*" AuditLog : genera
+    Category "0..1" o-- "*" Publication : clasifica
+    Category "0..1" o-- "*" Notice : clasifica
+    SocialPost "0..1" --> "0..1" Publication : origina
+    Document "0..1" o-- "*" Notice : adjunto
+    Document "0..1" o-- "*" Schedule : grilla
+    Document "0..1" o-- "*" ExamCall : adjunto
+    AcademicTerm "1" *-- "*" Schedule : contiene
+    AcademicTerm "1" *-- "*" ExamCall : contiene

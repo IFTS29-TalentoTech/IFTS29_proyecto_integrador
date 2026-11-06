@@ -1,0 +1,28 @@
+flowchart LR
+    CTX["Contexto de cada pedido"] --> S["Almacenamiento"]
+    CTX --> M["Correo"]
+    CTX --> IG["Cliente de Instagram"]
+
+    S --> SL["Disco local"]
+    S --> SM["En memoria (pruebas)"]
+    S --> S3["S3 compatible"]
+    M --> MC["Consola (desarrollo)"]
+    M --> MS["SMTP"]
+    M --> MF["Simulado (pruebas)"]
+    IG --> IF["Simulado (demostración)"]
+    IG --> IGG["Graph API de Meta"]
+
+    PANEL[("Configuración cargada desde el panel<br/>cifrada con AES-256-GCM")] -->|"tiene prioridad"| M
+    PANEL -->|"tiene prioridad"| IG
+    ENV[".env: valores por defecto"] --> S
+    ENV --> M
+    ENV --> IG
+
+    classDef nucleo fill:#291711,stroke:#291711,color:#F6F6F3
+    classDef servicio fill:#E0DFD5,stroke:#8D775F,color:#291711
+    classDef opcion fill:#F6F6F3,stroke:#6F5142,color:#291711
+    classDef config fill:#F7E9D6,stroke:#B77A3A,color:#291711
+    class CTX nucleo
+    class S,M,IG servicio
+    class SL,SM,S3,MC,MS,MF,IF,IGG opcion
+    class PANEL,ENV config

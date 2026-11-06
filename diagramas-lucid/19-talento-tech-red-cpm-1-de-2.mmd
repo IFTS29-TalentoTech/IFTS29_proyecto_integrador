@@ -1,0 +1,32 @@
+flowchart LR
+    A["<b>A</b> · Relevamiento<br/>2 sem · ES 0 / EF 2<br/>holgura 0"]
+    B["<b>B</b> · Análisis, documento de requerimientos y backlog<br/>2 sem · ES 2 / EF 4<br/>holgura 1"]
+    C["<b>C</b> · Prototipo en Figma y preparación de la DEMO<br/>3 sem · ES 2 / EF 5<br/>holgura 1"]
+    D["<b>D</b> · Modelado<br/>3 sem · ES 2 / EF 5<br/>holgura 0"]
+    E["<b>E</b> · DEMO con el cliente<br/>1 sem · ES 5 / EF 6<br/>holgura 1"]
+    F["<b>F</b> · Arquitectura, repositorio, CI/CD y hosting<br/>1 sem · ES 5 / EF 6<br/>holgura 0"]
+    G["<b>G</b> · Backend<br/>5 sem · ES 6 / EF 11<br/>holgura 0"]
+    H["<b>H</b> · Frontend del sitio público<br/>5 sem · ES 6 / EF 11<br/>holgura 2"]
+    I["<b>I</b> · Panel de administración<br/>6 sem · ES 6 / EF 12<br/>holgura 1"]
+    S["Sigue en la parte 2:<br/>H e I llegan al hito M · G alimenta J y K"]
+    A --> B
+    A --> C
+    A --> D
+    C --> E
+    D --> E
+    B --> F
+    D --> F
+    F --> G
+    E --> H
+    F --> H
+    E --> I
+    F --> I
+    G --> S
+    H --> S
+    I --> S
+    classDef crit fill:#F3DCDC,stroke:#7A3A32,stroke-width:2px,color:#1A1F2B
+    classDef norm fill:#E2EBF5,stroke:#24507F,color:#1A1F2B
+    classDef nota fill:#FFFFFF,stroke:#24507F,color:#1A1F2B,stroke-dasharray:6 4
+    class A,D,F,G crit
+    class B,C,E,H,I norm
+    class S nota
