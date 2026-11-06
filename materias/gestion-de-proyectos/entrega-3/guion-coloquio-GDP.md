@@ -73,12 +73,12 @@ Y suma accesos directos a los sistemas que los estudiantes ya usan y un formular
 
 | Indicador de éxito | Meta |
 |---|---|
-| Secciones institucionales completas y validadas por el cliente | En la DEMO de la semana 6 *(cumplido: 06/10)* |
+| Secciones institucionales completas y validadas por el cliente | En la DEMO de la semana 6 *(cumplido)* |
 | Panel que permite cargar novedades, horarios y galería sin tocar código | En la versión funcional de la semana 13 |
 | Contenido académico visible solo del cuatrimestre en curso | 100 %, sin información obsoleta |
 | Publicación desde redes con selección editorial, probada con un caso real | Antes de la entrega final |
 
-"¿Cómo van a saber que funcionó? Con cuatro indicadores. Las secciones institucionales validadas por ustedes, que ya hicimos en la demo del 6 de octubre. Un panel con el que cargan novedades, horarios y galería sin ayuda. Cero información vencida visible. Y una publicación real de Instagram en el sitio. Sumamos tres medidas de calidad: accesibilidad WCAG 2.2 AA, rapidez de carga medida con Lighthouse y cobertura de pruebas del 60 % en el servidor."
+"¿Cómo van a saber que funcionó? Con cuatro indicadores. Las secciones institucionales validadas por ustedes, que ya hicimos en la demo de la semana 6. Un panel con el que cargan novedades, horarios y galería sin ayuda. Cero información vencida visible. Y una publicación real de Instagram en el sitio. Sumamos tres medidas de calidad: que cualquier persona pueda usar el sitio, incluidas las que tienen alguna discapacidad; que cargue rápido en un celular; y que lo probemos de forma automática para detectar fallas antes de que las vean ustedes."
 
 ---
 
@@ -89,9 +89,9 @@ Y suma accesos directos a los sistemas que los estudiantes ya usan y un formular
 
 "Identificamos doce riesgos y a cada uno le pusimos probabilidad, impacto, responsable y dos planes: uno para prevenirlo y otro por si ocurre igual. Estos son los de exposición alta.
 
-El mayor es técnico. **Retraso en el servidor**: la planificación nos da una probabilidad de llegar a la versión funcional en la semana 13 del 36 %, y del 86 % en la semana 14. Es un hito ajustado y lo decimos de frente. Prevención: definir primero el contrato de la API y avanzar el frente visual con datos simulados. Si pasa, recortamos a un MVP con novedades, horarios, archivo y acceso, y el resto entra una semana después.
+El mayor es técnico. **Retraso en el servidor**: la planificación nos da una probabilidad de llegar a la versión funcional en la semana 13 del 36 %, y del 86 % en la semana 14. Es un hito ajustado y lo decimos de frente. Prevención: definir primero cómo se comunican el sitio y el servidor, y avanzar el frente visual con datos de prueba. Si pasa, entregamos una primera versión con novedades, horarios, archivo y acceso, y el resto entra una semana después.
 
-Segundo: **Instagram**. Su API puede cambiar o el acceso vencer. Prevención: una prueba de concepto temprana y un módulo aislado. Si falla, se cargan las publicaciones a mano desde el panel y el sitio sigue funcionando."
+Segundo: **Instagram**. La conexión con Instagram puede cambiar o el permiso vencer. Prevención: una prueba temprana y mantener esa parte separada del resto del sitio. Si falla, se cargan las publicaciones a mano desde el panel y el sitio sigue funcionando."
 
 ### Slide 7 — Mitigación y contingencia (Adrián, 1:10)
 > **Slide:** tabla de 4 filas (R3, R4/R5, R8, R12): Riesgo → Qué hacemos para evitarlo → Qué hacemos si ocurre.
@@ -134,16 +134,16 @@ Y hay dos opciones para después: un contrato de mantenimiento de USD 1.800 al a
 
 > **Slide:** línea de tiempo con los hitos (Reunión 1 ✅ · DEMO ✅ · Versión funcional, semana 13), y una frase de cierre con contacto del equipo y enlace al sitio.
 
-"Para cerrar: ya relevamos, ya validamos el diseño con ustedes y estamos construyendo. Lo que sigue es la versión funcional y la capacitación a los editores. Les pedimos lo de siempre: los contenidos estancos confirmados, los hashtags para Instagram y que nos digan cómo avanzar con el dominio. Gracias."
+"Para cerrar: ya relevamos, ya validamos el diseño con ustedes y estamos construyendo. Lo que sigue es la versión funcional y la capacitación a los editores. Les pedimos lo de siempre: los contenidos estancos confirmados, las etiquetas (hashtags) para Instagram y que nos digan cómo avanzar con el dominio. Gracias."
 
 ---
 
 ## Antes de grabar: pendientes y decisiones
 
 1. **Consistencia con la Parte 2 entregada.** Todos los números de arriba salen del PDF "Parte 2 - v final" (680 h, USD 21.692, USD 27.115, 36 % y 86 %, 12 riesgos). Si alguien cambia un dato en la presentación, el video y el TP se contradicen.
-2. **Supuestos económicos a validar entre nosotros** (el readme los marca como pendientes de revisión): costos fijos de USD 4.200 por año y el valor de USD 30 la hora. No inventar otros.
-3. **¿Mostramos la aplicación andando?** El readme dice que la plataforma ya está construida y verificada. Ayudaría a la *precisión* de la rúbrica (hay gráficos y datos) mostrar 10 a 15 segundos de pantalla en la slide 3 o 5. Es una decisión del equipo; el guión funciona sin eso.
-4. **Dos fechas distintas en los documentos** (cronograma 24/08 vs 28/08): en el video no decir fechas de inicio; usar "semana 6" y "semana 13".
-5. **Lenguaje de cliente.** Evitar "WIP", "CPM", "PERT", "Scrumban" en pantalla; si se mencionan, con una frase de explicación. La metodología puede aparecer en una línea en la slide 7 ("trabajamos en ciclos de dos semanas con revisión del cliente").
-6. **Forma de grabar:** cada uno graba con el mismo micrófono o nivel de volumen (lo pide la consigna), una toma por bloque y se une en edición. Ensayar con cronómetro: si pasa de 9:30, recortar la slide 8 y la lista de indicadores.
-7. **Herramienta:** Google Slides o Canva (ya los usamos en la Etapa 2) con la paleta tierra del Figma (`#8D775F`, `#F6F6F3`, `#6F5142`).
+2. **Supuestos económicos: confirmados** (son los del trabajo final entregado: USD 4.200 de costos fijos por año y USD 30 la hora).
+3. **La aplicación se muestra andando**, de fondo mientras hablamos, compartiendo pantalla en Teams. Sugerencia: tener la app abierta en el sitio público (slides 2–3 y 5) y en el panel (slide 5 y 9), y recorrerla despacio, sin hablar de lo que se ve en pantalla en ese momento sino de lo que cuenta la slide.
+4. **Fechas:** las que valen son las del trabajo entregado (cronograma del 28/08 al 18/12, el de Drive). En el video no se dicen fechas de inicio: se usa "semana 6" y "semana 13".
+5. **Lenguaje de cliente: ajustado.** Se sacaron WCAG, Lighthouse, API, MVP y cobertura de pruebas del texto hablado. Si alguien dice "WIP", "CPM", "PERT" o "Scrumban", que sea con una frase de explicación. La metodología puede ir en una línea en la slide 7 ("trabajamos en ciclos de dos semanas con revisión del cliente").
+6. **Grabación:** en Teams, como en la Etapa 2. Ponerse de acuerdo en el orden de los turnos y en pasar la palabra ("Gastón, te cedo la palabra"). Ensayar con cronómetro: si pasa de 9:30, recortar la slide 8 y la lista de indicadores.
+7. **Herramienta:** Google Slides, con la paleta tierra del Figma (`#8D775F`, `#F6F6F3`, `#6F5142`).
