@@ -38,7 +38,7 @@ Repositorio de trabajo del equipo **Talento Tech** (IFTS N°29, Tecnicatura Supe
     │   ├── consigna/          Propuesta de TP integrador + rúbrica
     │   ├── entrega-1/         Parte 1 (docx + pdf de trabajo, y PDF "Comisión E Equipo 08")
     │   └── entrega-2/         Parte 2: parte-2.md + build_gdp.py + cpm.py (CPM/PERT) → PDF, diagramas/ (Gantt, red CPM)
-    └── emprendedurismo/
+    └── emprendedorismo/
         ├── consigna/          1° TP integrador (Unidades 1 a 3)
         ├── entrega-1/         trabajo-practico-integrador.md
         ├── entrega-2/         (vacía)
@@ -53,7 +53,7 @@ Convención: `materias/<materia>/{consigna, entrega-N, material}`. Todo lo compa
 |---|---|---|
 | **PPIV – Proyecto integrador** | ✅ Hecha (Etapa 1: empresa Talento Tech, misión/visión, roles, relevamiento) | ✅ **Etapa 2 entregada**: `Etapa 2 - Proyecto Integrador.pdf` (52 págs., exportado de Google Docs; **es la versión oficial**). `etapa-2-documento.md` + `build.py` son el borrador previo y **quedaron desactualizados** respecto del PDF entregado (ver `proyecto/decisiones.md`). Links reales en la Tabla 13 del PDF (Drive, Lucidchart, Trello, GitHub, Canva). |
 | **Gestión de Proyectos** | ✅ Hecha y **corregida por la cátedra: 84/100** (ver `entrega-1/corrección.txt`). A mejorar en la Parte 2: origen de los requerimientos (Negocio / Sistemas) y justificar Scrumban por flujo, iteración y control, **no** por "Scrum es para equipos grandes full-time". | 🟡 **Parte 2 armada (borrador, 8 págs.)**: `materias/gestion-de-proyectos/entrega-2/GDP_Comisión E_Equipo 08_TPI - Parte 2.pdf`. Incluye los 5 ítems (6 a 10), Gantt, CPM (fin en 16 semanas, ruta crítica A-D-F-G-J/K), PERT (13,25 sem esperadas; 36 % de cumplir la semana 13, 86 % la 14), 12 riesgos, licencia MIT, presupuesto USD 22.440 y punto de equilibrio, y el Anexo con el origen Negocio/Sistema de los requerimientos (corrección de la Parte 1). **Pendiente de revisión del equipo:** supuestos económicos (costos fijos USD 4.200/año, precios de los escenarios), fecha de la reunión de devolución y enlace a actas. |
-| **Emprendedurismo** | ✅ Hecha (1° TP: perfil emprendedor, desarrollo profesional, oportunidad, FODA) | ❓ Consigna de la 2ª entrega **no está en el repo** (el material cubre Unidades 1–3). Agregarla en `materias/emprendedurismo/consigna/`. |
+| **Emprendedorismo** | ✅ Hecha (1° TP: perfil emprendedor, desarrollo profesional, oportunidad, FODA) | ❓ Consigna de la 2ª entrega **no está en el repo** (el material cubre Unidades 1–3). Agregarla en `materias/emprendedorismo/consigna/`. |
 
 ## Etapa 3 (MVP): especificaciones, no código
 
@@ -96,7 +96,7 @@ La aplicación se desarrolló en un repositorio separado, **local y sin remoto t
 1. Antes de cualquier tarea, leer `proyecto/context.md`. Para trabajo de materia, leer además la `consigna/` correspondiente y la entrega 1 de esa materia (mantener coherencia de nombres, roles, objetivos y datos).
 2. No inventar datos del cliente ni del equipo: salen de `proyecto/` y de las entregas hechas. Si falta algo, marcarlo como `[completar]`.
 3. Entregas nuevas van en `materias/<materia>/entrega-N/`; si hay información nueva del cliente, actualizar `proyecto/context.md` (no la materia).
-4. Respetar el formato exigido por cada consigna (APA en PPIV; máx. 10 págs. y nombre de archivo en GdP; conciso y fundamentado en Emprendedurismo).
+4. Respetar el formato exigido por cada consigna (APA en PPIV; máx. 10 págs. y nombre de archivo en GdP; conciso y fundamentado en Emprendedorismo).
 5. Para gestión (OKR/KPI/SMART/riesgos) usar `agents/agente-gestion-proyecto.md`. Para comunicación escrita formal con el cliente, `referencias/Manual de Estilo del GCABA...pdf`.
 6. Español rioplatense, tono profesional y directo.
 7. Las consignas de `consigna/` tienen un `.txt` al lado del PDF (extraído con `pdftotext -layout`): leer ese. Para otros PDF/DOCX, extraer el texto en vez de asumir su contenido.
